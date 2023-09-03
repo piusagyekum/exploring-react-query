@@ -1,25 +1,16 @@
-import axios from "axios"
-import { useQuery } from "react-query"
+import { Route, Routes } from "react-router-dom"
+import Home from "./pages/Home"
+import Details from "./pages/Details"
 
 function App() {
-  const {
-    isLoading,
-    data: response,
-    isError,
-    error,
-  } = useQuery("fetchItems", () => {
-    return axios.get("http://localhost:4000/users")
-  },)
+
 
   return (
     <>
-      <h1>USERS</h1>
-      {isLoading && <div>Loading.....</div>}
-      {isError && <div>{error.message}</div>}
-
-      {response?.data.map((user, index) => (
-        <div key={index}>{user.name}</div>
-      ))}
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/:id" element={<Details />} />
+      </Routes>
     </>
   )
 }
