@@ -1,6 +1,7 @@
 import { useQuery } from "react-query"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import Form from "../components/Form"
 
 const Home = () => {
   const {
@@ -43,6 +44,8 @@ const Home = () => {
   )
   return (
     <div>
+      <h1>Input form</h1>
+      <Form/>
       <h1>USERS</h1>
       {/* manually fetching of data - call the refresh function destructured from the useQuery hook */}
       <button onClick={refetch}>Fetch data</button>
